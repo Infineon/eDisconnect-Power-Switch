@@ -1,0 +1,188 @@
+e switch Firemware version 3.3.2 (8/5/2024)
+-------------------------------------
+- Fix issue that precharge voltage monitoring is not enable
+- Fix issue that the max length of 500msec is not select correctly
+
+e switch Firemware version 3.3.1 (7/5/2024)
+-------------------------------------
+- Fix the precharge to 98% of Vpack.
+- Fix precharge max length to 500msec. 
+
+e switch Firemware version 3.3 (6/5/2024)
+-------------------------------------
+- Fix cannot start at 45V due to fix precharge fault threshold at 45.6V.
+- Fix precharge fault is not clear before turn on result cannot turn on if precharge fault is set
+- Update and fixe release the first version of GUI for G2M v1.0
+
+e switch Firemware version 3.2.10 (17/4/2024)
+-------------------------------------
+- Fix OCD 1 and OCD 2 detection issue to switch off switches.
+- change the op state detection of fault before doing the op state operation
+- add in setting for disable DSOV, initialize to 0.
+- release the first version of GUI for IFX and G2M
+
+e switch Firemware version 3.2.9 (8/04/2024)
+-------------------------------------
+- Fix OCD 1 and OCD 2 detection issue to switch off switches.
+- set pre-charge pulse to min 60msec
+- update gate driver setting 
+// intial value for Gate Driver current sense.
+set_OverCurrentThres = CSOCT_0_3; //CSOCT_0_3, 2=+-0.25*VDD
+OVRT = VORT_1000US; //VORT_50US
+UVRT = VURT_1MS; // VURT_1MS
+currentGain = 0; // CSAG Driver setting CSAG_10VV
+set_OverCurrentThres = CSOCT_0_3; //CSOCT_0_3, 2=+-0.25*VDD
+B_DSOV = 7; // DSOT_600MV
+A_DSOV = 7; // DSOT_600MV
+MOSA_Blank = 0; // BT_10US
+MOSB_Blank = 0; //BT_10US
+MOSA_Filter = 3; // FT_5US
+MOSB_Filter = 3; // FT_5US
+XCTR = 1; //CC_ON
+- new GUI 4.2.7
+> display firmware op state
+> change pre-charge select option from 60msec
+
+
+e switch Firemware version 3.2.8 (25/03/2024)
+-------------------------------------
+- add in OCD1 detection for OC with indication and turn off switch
+- add in OCD2 detection for transient current with indication.
+- add in SW function when GUI SW turn off during fault to go to OFF state without freewheeling for next ON sequence.
+- In fault state switch turn off without freewheeling
+
+e switch Firemware version 3.2.7 (06/03/2024)
+-------------------------------------
+- shift moving average filter to do it a sampling rate
+- implement pt1 filter for current sensing
+
+e switch Firemware version 3.2.6 (05/03/2024)
+-------------------------------------
+- add value in GUI for 2ED4820 calibration
+
+e switch Firemware version 3.2.5 (04/03/2024)
+-------------------------------------
+- update GUI for on freewheeling setting
+- set the cut of threshold of freewheeling to 10V.
+
+e switch Firemware version 3.2.4 (01/03/2024)
+-------------------------------------
+- update new NTC lut to include negative temperature
+- update GUI for telemetry reporting
+
+e switch Firemware version 3.2.3 (29/02/2024)
+-------------------------------------
+- Fixed all issue with pre-charge and freewheeling
+
+e switch Firemware version 3.2.2 (27/02/2024)
+-------------------------------------
+- Implement a flag to monitor pre-charge control to debug issue.
+
+e switch Firemware version 3.2.1 (23/02/2024)
+-------------------------------------
+- Add debug button in GUI to enable or disable the precharge and freewheeling control base on voltage monitoring of Vload
+- Implement OCD function from TLE4972
+
+e switch Firemware version 3.2 (21/02/2024)
+-------------------------------------
+- Implement precharge and freewheeling control base on voltage monitoring of Vload
+- Implement the reset button function
+
+e switch Firemware version 3.1.1 (12/1/2024)
+-------------------------------------
+1. GUI version 3.9 Admin Mode
+2. Update the fixed value for 2ED4820 current and TLE4972 current senstivity
+3. Update GUI to display all value related to current measurement.
+
+e switch Firemware version 3.1 (12/1/2024)
+-------------------------------------
+1. GUI version 3.8 Admin Mode
+2. Fixed issue with the 2ED4820 setting. In previous version, the setting is always at default even it is set in GUI.
+3. Firmware allow GUI to change 2ED4820 settings.
+4. Pre-charge failure detection can be enable through GUI for initial testing.(to set it default ON after testing) 
+5. TLE4972 Hall Sensor measure is enable to GUI (Need to set the sensitivity for accurate reading.)
+
+e switch Firmware version 3.0 (17/11/2023)
+-------------------------------------
+1. Feature same as version 2.3
+2. PIn mapping change for 2ED4820 current ADC and TLE4972 current ADC  
+
+e switch Firemware version 2.3 (17/11/2023)
+-------------------------------------
+1. GUI version 3.7.3 Admin Mode
+2. Change the 2ED4820 current measure setting
+- Only need to set the CSAG Gain(Gdiff), the firmware will auto derived from the gate driver setting
+- Fine tune accuary with the KI value
+3. 2ED4820 interrupt for fault and warn are check.
+- Flag is clear when interrupt detected.
+- If cannot be clear move to fault state.
+- During fault state it will try to clear fault every 10ms. If clear it will auto restart.
+
+
+e switch Firemware version 2.2.2 (5/10/2023)
+-------------------------------------
+1. GUI version 3.7.2
+2. Add parameter for Current Sense calibration in GUI
+-> 2ED4820 CSAG Gain setting (set only during OFF state)
+-> Real Gain value set in 2ED4820 CSAG (set only during OFF state)
+-> Shunt Resistor Value in Ohms (take 1 cycle for updae ~10ms)
+-> Calibration Gain value (take 1 cycle for updae ~10ms)
+-> Firmware avergaging Filter (take 1 cycle for update ~10ms)
+3. Add in changes by Michael
+
+
+e switch Firemware version 2.2 (5/10/2023)
+-------------------------------------
+1. GUI version 3.7
+2. 2ED4820 Standalone mode operation 
+3. B57861S NTC temperature LUT table
+4. 2ED4820 Current sensing 
+5. PCB LED status syn with GUI LED
+6. Ported freewheel feature from v1.1
+7. Ported precharge feature from v1.1
+
+e switch Firemware version 2.1
+----------------------------------
+1. NTC look up table is updated. 
+2. ADC range for NTC (0'C, 150'C) is (3008 to 111). 
+
+e switch Firemware version 2.0 
+----------------------------------
+1. Software is modified with new state diagram. 
+2. Update GUI with operation state.
+3. OV,UV, OT,UT are implemented.
+4. Reconnection after fault is cleared.
+5. Current sensor slider gain is added in GUI. 
+6. Temperature values are calculated from NTC table and displayed in GUI. 
+7. Disabled precharge and free wheel as Hardware is not ready for testing. Due to leakage current issue and Pre charge circuit modification. 
+8. Removed the register Map and tidy up the GUI.
+9. Added eDisconnect Circuit Diagram in GUI.
+10. Proposed New LED status for eDisconnect operation.
+
+
+03/07/2023
+e switch Firemware version 1.1 
+----------------------------------
+1. ADC reading from TLE4972 current sensor
+	1.1 R63 is connected at ISNS ADC
+	1.2 VREF ADC is assigned to P2.1
+2. Pre-Charge fail LED indication (Red blinking 0.5s) 
+3. P1.0_PWMB is assigned to freewheel signal for safety purpose. If it is assigned to FW_Ctrl, there is leakage current and voltage at pack terminal is high and Freewheel is shorting the pack terminal. Once the leakage current issue is resolved, P1.3 FW_Ctrl will be reassigned to freewheel signal. 
+
+22/06/2023
+e switch Firemware version 1.0 
+----------------------------------
+
+1. SPI communication with 2ED4820
+2. Discharge ON/OFF
+3. Charge ON/OFF
+4. Register access 
+5. Alarm monitor and clearance
+6. Control buttons
+7. Status LED 
+8. Pre charge mode feature 
+9. Free wheeling feature 
+10. ADC reading for Volage, current and Temperature monitor 
+11. RG LED functionalities
+
+
