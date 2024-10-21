@@ -6,7 +6,7 @@
 
 _Disclaimer: This is a code example released for the benefit of the community users. These projects have only been tested for the listed BSPs, tools versions, and toolchains documented in this readme. They are intended to demonstrate how a solution / concept / use-case can be achieved on a particular device._
 
-This code example demonstrates the operation of the eDisconnect Power Switch Reference Board. In order to test this software; [eDisconnect Power Switch Board]() is needed.
+This code example demonstrates the operation of the eDisconnect Power Switch Reference Board. In order to test this software; [eDisconnect Power Switch Board](https://www.infineon.com/cms/en/product/evaluation-boards/ref_60100edps/) is needed.
 
 ## Requirements
 
@@ -21,7 +21,7 @@ This code example demonstrates the operation of the eDisconnect Power Switch Ref
 
 ## Supported Kits
 
-- [eDisconnect Power Switch]() (`REF_60100EDPS`)
+- [eDisconnect Power Switch](https://www.infineon.com/cms/en/product/evaluation-boards/ref_60100edps/) (`REF_60100EDPS`)
 
 
 
